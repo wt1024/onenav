@@ -2,6 +2,8 @@
 /**
  * 首页模板入口
  */
+//检查认证 wangting, 私人使用强制登录
+check_auth($site_setting['user'],$site_setting['password']);
 //如果已经登录，获取所有分类和链接
 if( is_login() ){
     //查询所有分类目录
@@ -168,6 +170,23 @@ if( is_dir('templates/'.$template) ){
 }
 else{
     $tpl_dir = 'data/templates/';
+}
+
+/**
+ * 检查授权
+ */
+
+function check_auth($user,$password){
+    $ip = getIP();
+    $key = md5($user.$password.'onenav');
+    //获取cookie
+    $cookie = $_COOKIE['key'];
+    //如果cookie的值和计算的key不一致，则没有权限
+    if( $cookie !== $key ){
+        $msg = "<h3>认证失败，请<a href = 'index.php?c=login'>重新登录</a>！</h3>";
+        require('templates/admin/403.php');
+        exit;
+    }
 }
 
 

@@ -309,12 +309,6 @@ function check_auth($user,$password){
     }
 }
 
-function wl($text) {                                                                                                                           
-  $myfile = fopen("my.log", "a");
-  fwrite($myfile, $text . "\n");
-  fclose($myfile);
-}  
-
 
 // 载入前台首页模板
 require('templates/admin/'.$page);

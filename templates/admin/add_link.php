@@ -9,7 +9,9 @@
     <div class="layui-form-item">
     <label class="layui-form-label">URL</label>
     <div class="layui-input-block">
-      <input id = "url" name="url" required  lay-verify="required" placeholder="请输入有效链接" autocomplete="off" class="layui-input">
+      <input id = "url" name="url" required  lay-verify="required" placeholder="请输入有效链接" autocomplete="off" class="layui-input"
+      value = "<?php echo $_GET["url"]; ?>"
+      >
     </div>
   </div>
 <!-- 添加备用链接 -->
@@ -25,7 +27,9 @@
   <div class="layui-form-item">
     <label class="layui-form-label">链接名称</label>
     <div class="layui-input-block">
-      <input type="text" id = "title" name="title" required  lay-verify="required" placeholder="请输入链接名称" autocomplete="off" class="layui-input">
+      <input type="text" id = "title" name="title" required  lay-verify="required" placeholder="请输入链接名称" autocomplete="off" class="layui-input"
+      value = "<?php echo $_GET["title"]; ?>"
+      >
     </div>
   </div>
   <div class="layui-form-item">
@@ -59,7 +63,8 @@
   <div class="layui-form-item layui-form-text">
     <label class="layui-form-label">描述</label>
     <div class="layui-input-block">
-      <textarea name="description" id = "description" placeholder="请输入内容" class="layui-textarea"></textarea>
+      <textarea name="description" id = "description" placeholder="请输入内容" class="layui-textarea"><?php echo $_GET["title"]; ?>
+      </textarea>
     </div>
   </div>
   <div class="layui-form-item">
@@ -73,6 +78,12 @@
     
 </div>
 <!-- 内容主题区域END -->
+<div>
+                <h5>网页收集小工具</h5>
+                <a href="javascript:(function()%7Bvar%20description;var%20desString=%22%22;var%20metas=document.getElementsByTagName('meta');for(var%20x=0,y=metas.length;x%3Cy;x++)%7Bif(metas%5Bx%5D.name.toLowerCase()==%22description%22)%7Bdescription=metas%5Bx%5D;%7D%7Dif(description)%7BdesString=%22&amp;description=%22+encodeURIComponent(description.content);%7Dvar%20win=window.open(%22http://sq.wangt.cc/index.php?c=admin&page=add_link&from=webtool&url=%22+encodeURIComponent(document.URL)+desString+%22&title=%22+encodeURIComponent(document.title)+%22&charset=%22+document.charset,'_blank');win.focus();%7D)();"
+                    onclick="alert('请把这个按钮拖到您的浏览器书签栏'); return false;" class="layui-btn">+书签</a>
+                <span>(将该按钮拖动至浏览器书签栏)</span>
+            </div>
 </div>
   
 <?php include_once('footer.php'); ?>
